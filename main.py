@@ -9,7 +9,7 @@ import zstandard as zstd
 import datetime
 
 parser = argparse.ArgumentParser(description="discord chat log downloader")
-parser.add_argument('--token', type=str, help='discord user token')
+parser.add_argument('--token', type=str, help='discord auth token')
 parser.add_argument('--channel', type=int, help='discord channel id')
 parser.add_argument('--path', type=str, help='where to save the logs')
 parser.add_argument('--batch', type=int,
@@ -101,7 +101,7 @@ def append_batch(file_path, text):
     # Open the zstd file in append mode
     with open(file_path, 'ab') as file:
         # Initialize a zstd compressor
-        compressor = zstd.ZstdCompressor()
+        compressor = zstd.ZstdCompressor(level=22)
 
         # Encode the text as bytes
         text_bytes = text.encode('utf-8')
