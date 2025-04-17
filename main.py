@@ -152,7 +152,7 @@ class DiscordDownloader(discord.Client):
         if last_read_message == 0:
             last_read_message = None
 
-        print(f"INFO:\nLast read message: {last_read_message}\nTotal messages read: {total_messages_read}\nTotal uncompressed size: {uncompressed_size} bytes")
+        print(f"INFO:\nLast read message: {last_read_message}\nTotal messages read: {total_messages_read:,}\nTotal uncompressed size: {uncompressed_size:,} bytes")
 
         # Start reading the chat logs
         while True:
@@ -189,12 +189,12 @@ class DiscordDownloader(discord.Client):
                 print("Shutdown was requested. Exiting now.")
                 sys.exit(0)
 
-            print(f"Batch read. TOTAL MESSAGES: {total_messages_read}, TOTAL UNCOMPRESSED SIZE: {uncompressed_size} bytes")
+            print(f"Batch read. TOTAL MESSAGES: {total_messages_read:,}, TOTAL UNCOMPRESSED SIZE: {uncompressed_size:,} bytes")
 
             if len(messages) < args.batch:
                 break
 
-        print(f"FINISHED DOWNLOADING! TOTAL MESSAGES: {total_messages_read}, TOTAL UNCOMPRESSED SIZE: {uncompressed_size} bytes")
+        print(f"FINISHED DOWNLOADING! TOTAL MESSAGES: {total_messages_read:,}, TOTAL UNCOMPRESSED SIZE: {uncompressed_size:,} bytes")
         await self.close()
         sys.exit(0)
 
